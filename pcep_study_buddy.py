@@ -72,3 +72,15 @@ def build_questions():
             "answer": "B",
         },
     ]
+
+def ask_choice(prompt, valid_choices):
+    """
+    Keep asking until the user provides a valid choice.
+    Returns the chosen option as uppercase string.
+    """
+    valid = {c.upper() for c in valid_choices}
+    while True:
+        choice = input(prompt).strip().upper()
+        if choice in valid:
+            return choice
+        print(f"Please enter one of: {', '.join(sorted(valid))}")
