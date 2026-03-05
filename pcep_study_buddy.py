@@ -131,3 +131,23 @@ def run_quiz(questions):
         print("🎉 Pass (practice threshold met)")
     else:
         print("📘 Not yet — review and try again")
+
+    # Optional: show missed questions
+    if missed:
+        show = ask_choice("\nShow missed questions? (Y/N): ", ["Y", "N"])
+        if show == "Y":
+            print("\n--- Missed Questions ---")
+            for num, user_a, correct_a, qtext in missed:
+                print(f"Q{num}: you chose {user_a}, correct was {correct_a}")
+                print(f"  {qtext}\n")
+
+    print("Done!\n")
+
+
+def main():
+    questions = build_questions()
+    run_quiz(questions)
+
+
+if __name__ == "__main__":
+    main()
